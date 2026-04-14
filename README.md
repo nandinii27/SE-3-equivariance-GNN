@@ -47,16 +47,6 @@ KEY ARCHITECTURAL CHOICES
   - Dropout 0.15 in readout MLP for MC-dropout compatibility
   - CosineAnnealingLR scheduler, Adam optimiser, gradient clipping at 1.0
 
-FILES
------
-  nb2_painn_full_run_executed.ipynb   full pipeline with cell outputs
-  painn_results.json                  dataset stats, training history,
-                                      ensemble predictions on val set
-  se3_equivariance_widget.html        standalone interactive demo
-                                      (rotate the complex, watch channels)
-  GITHUB_EMBED.md                     instructions for GitHub Pages /
-                                      Binder / nbviewer embedding
-
 DATASET USED HERE
 -----------------
   15 FDA-approved kinase/oncology inhibitors (imatinib, venetoclax,
@@ -64,16 +54,6 @@ DATASET USED HERE
   v2020. 3D ligand conformers generated via RDKit ETKDGv3 + MMFF
   optimisation. Protein pockets are synthetic shells around the ligand
   centroid (proof-of-pipeline only — not real crystal structures).
-
-TO RUN ON REAL PDBbind
------------------------
-  1. Download PDBbind v2020 refined set from pdbbind.org.cn
-  2. Replace synthetic_pocket() with build_complex_graph() reading
-     actual _protein.pdb and _ligand.mol2 files
-  3. Replace rdkit_binding_proxy() with Vina Python API scores
-     (meeko + vina are already imported in the notebook)
-  4. Install torch-cluster for proper O(N log N) radius graphs
-  5. Cache graphs as .pt files to avoid repeated parsing at each epoch
 
 DEPENDENCIES
 ------------
